@@ -1,0 +1,79 @@
+################################################################################################################################################
+                 HONDA CPSD  PROD  CLUSTER HEALTH STATUS REPORT
+#################################################################################################################################################
+
+
+        OCP CPSD  PROD  NODE STATUS
+
+NAME                                         STATUS    ROLES        AGE       VERSION            INTERNAL-IP    EXTERNAL-IP   OS-IMAGE                                                       KERNEL-VERSION                 CONTAINER-RUNTIME
+ip-10-88-18-106.us-east-2.compute.internal   Ready     app,worker   131d      v1.21.11+6b3cbdd   10.88.18.106   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-18-107.us-east-2.compute.internal   Ready     infra        453d      v1.21.11+6b3cbdd   10.88.18.107   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-18-17.us-east-2.compute.internal    Ready     app,worker   452d      v1.21.11+6b3cbdd   10.88.18.17    <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-18-175.us-east-2.compute.internal   Ready     master       453d      v1.21.11+6b3cbdd   10.88.18.175   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-18-178.us-east-2.compute.internal   Ready     app,worker   149d      v1.21.11+6b3cbdd   10.88.18.178   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-19-142.us-east-2.compute.internal   Ready     app,worker   149d      v1.21.11+6b3cbdd   10.88.19.142   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-19-79.us-east-2.compute.internal    Ready     app,worker   452d      v1.21.11+6b3cbdd   10.88.19.79    <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-21-122.us-east-2.compute.internal   Ready     infra        453d      v1.21.11+6b3cbdd   10.88.21.122   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-21-190.us-east-2.compute.internal   Ready     app,worker   452d      v1.21.11+6b3cbdd   10.88.21.190   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-21-4.us-east-2.compute.internal     Ready     master       453d      v1.21.11+6b3cbdd   10.88.21.4     <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-21-50.us-east-2.compute.internal    Ready     app,worker   149d      v1.21.11+6b3cbdd   10.88.21.50    <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-23-219.us-east-2.compute.internal   Ready     master       453d      v1.21.11+6b3cbdd   10.88.23.219   <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+ip-10-88-23-49.us-east-2.compute.internal    Ready     infra        453d      v1.21.11+6b3cbdd   10.88.23.49    <none>        Red Hat Enterprise Linux CoreOS 48.84.202206071759-0 (Ootpa)   4.18.0-305.49.1.el8_4.x86_64   cri-o://1.21.8-3.rhaos4.8.gitd7fbb0d.el8
+
+
+********************************************************************************************************************************************
+
+
+        OCP CPSD  PROD  NODE CPU & MEMORY STATUS
+
+NAME                                         CPU(cores)   CPU%      MEMORY(bytes)   MEMORY%
+ip-10-88-18-106.us-east-2.compute.internal   753m         10%       28437Mi         94%
+ip-10-88-18-107.us-east-2.compute.internal   1820m        11%       18138Mi         29%
+ip-10-88-18-17.us-east-2.compute.internal    332m         4%        8166Mi          26%
+ip-10-88-18-175.us-east-2.compute.internal   614m         8%        9200Mi          30%
+ip-10-88-18-178.us-east-2.compute.internal   745m         9%        6728Mi          22%
+ip-10-88-19-142.us-east-2.compute.internal   409m         5%        8365Mi          27%
+ip-10-88-19-79.us-east-2.compute.internal    625m         8%        28433Mi         93%
+ip-10-88-21-122.us-east-2.compute.internal   2186m        14%       19813Mi         31%
+ip-10-88-21-190.us-east-2.compute.internal   581m         7%        28286Mi         93%
+ip-10-88-21-4.us-east-2.compute.internal     1132m        15%       13570Mi         44%
+ip-10-88-21-50.us-east-2.compute.internal    690m         9%        26372Mi         86%
+ip-10-88-23-219.us-east-2.compute.internal   1247m        16%       14563Mi         47%
+ip-10-88-23-49.us-east-2.compute.internal    1070m        6%        15057Mi         24%
+./cpsdprod4.6.sh: line 39: 1,1: command not found
+
+
+********************************************************************************************************************************************
+
+
+        OCP CPSD  PROD  ROUTER & REGISTRY STATUS
+
+        ROUTER HEALTH
+
+
+router-default-7967bfccf-5w7s8   1/1       Running   0          22d
+router-default-7967bfccf-6cn6m   1/1       Running   0          22d
+router-default-7967bfccf-ksh9l   1/1       Running   0          22d
+
+********************************************************************************************************************************************
+
+
+
+**************************************************************************************************************************************************
+
+        OCP CPSD PROD  PODS WITH ERROR STATUS
+
+NAMESPACE                                          NAME                                                                  READY     STATUS      RESTARTS   AGE
+NAMESPACE                                          NAME                                                                  READY     STATUS      RESTARTS   AGE
+
+**************************************************************************************************************************************************
+
+        API service status
+
+kube-apiserver-ip-10-88-18-175.us-east-2.compute.internal        5/5       Running     0          21h
+kube-apiserver-ip-10-88-21-4.us-east-2.compute.internal          5/5       Running     0          21h
+kube-apiserver-ip-10-88-23-219.us-east-2.compute.internal        5/5       Running     0          21h
+
+************************************************************************************************************************************************
+
+[ibmmcms@ip-10-88-18-216 ~]$
