@@ -1,0 +1,515 @@
+kubectl debug node/10.189.31.131 --image=docker.io/library/alpine:latest -it
+Creating debugging pod node-debugger-10.189.31.131-bjjt2 with container debugger on node 10.189.31.131.
+If you don't see a command prompt, try pressing enter.
+/ # uptime
+ 11:05:50 up 15 days,  3:32,  0 users,  load average: 1.67, 3.00, 2.71
+
+Likhitha_Vembuluri@cloudshell:~$ kubectl debug node/10.189.31.132 --image=docker.io/library/alpine:latest -it
+Creating debugging pod node-debugger-10.189.31.132-hzf2q with container debugger on node 10.189.31.132.
+If you don't see a command prompt, try pressing enter.
+/ # uptime
+ 11:07:01 up 15 days,  3:33,  0 users,  load average: 2.96, 3.04, 2.37
+/ # exit
+
+Likhitha_Vembuluri@cloudshell:~$ kubectl debug node/10.213.45.158 --image=docker.io/library/alpine:latest -it
+Creating debugging pod node-debugger-10.213.45.158-rbbt2 with container debugger on node 10.213.45.158.
+If you don't see a command prompt, try pressing enter.
+/ # uptime
+ 11:07:43 up 15 days,  3:34,  0 users,  load average: 0.63, 0.59, 0.48
+/ # exit
+Likhitha_Vembuluri@cloudshell:~$ kubectl debug node/10.213.45.160 --image=docker.io/library/alpine:latest -it
+Creating debugging pod node-debugger-10.213.45.160-kc8xl with container debugger on node 10.213.45.160.
+If you don't see a command prompt, try pressing enter.
+/ # uptime
+ 11:08:06 up 15 days,  3:35,  0 users,  load average: 0.71, 1.37, 1.52
+/ # exit
+Likhitha_Vembuluri@cloudshell:~$ 
+
+
+Likhitha_Vembuluri@cloudshell:~$ kubectl get nodes -o wide
+NAME            STATUS   ROLES    AGE    VERSION        INTERNAL-IP     EXTERNAL-IP     OS-IMAGE             KERNEL-VERSION       CONTAINER-RUNTIME
+10.189.31.131   Ready    <none>   312d   v1.22.10+IKS   10.189.31.131   10.189.31.131   Ubuntu 18.04.6 LTS   4.15.0-180-generic   containerd://1.5.11
+10.189.31.132   Ready    <none>   312d   v1.22.10+IKS   10.189.31.132   10.189.31.132   Ubuntu 18.04.6 LTS   4.15.0-180-generic   containerd://1.5.11
+10.213.45.158   Ready    <none>   312d   v1.22.10+IKS   10.213.45.158   10.213.45.158   Ubuntu 18.04.6 LTS   4.15.0-180-generic   containerd://1.5.11
+10.213.45.160   Ready    <none>   312d   v1.22.10+IKS   10.213.45.160   10.213.45.160   Ubuntu 18.04.6 LTS   4.15.0-180-generic   containerd://1.5.11
+Likhitha_Vembuluri@cloudshell:~$ kubectl describe node 10.189.31.131
+Name:               10.189.31.131
+Roles:              <none>
+Labels:             arch=amd64
+                    beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    beta.kubernetes.io/os=linux
+                    deployment-zone=zone2prod
+                    failure-domain.beta.kubernetes.io/region=us-east
+                    failure-domain.beta.kubernetes.io/zone=wdc06
+                    ibm-cloud.kubernetes.io/encrypted-docker-data=true
+                    ibm-cloud.kubernetes.io/ha-worker=true
+                    ibm-cloud.kubernetes.io/iaas-provider=softlayer
+                    ibm-cloud.kubernetes.io/internal-ip=10.189.31.131
+                    ibm-cloud.kubernetes.io/machine-type=c3c.32x64.encrypted
+                    ibm-cloud.kubernetes.io/os=UBUNTU_18_64
+                    ibm-cloud.kubernetes.io/region=us-east
+                    ibm-cloud.kubernetes.io/sgx-enabled=false
+                    ibm-cloud.kubernetes.io/worker-id=kube-c4t3oiqw0chi6umb4sqg-production2-group1-00000456
+                    ibm-cloud.kubernetes.io/worker-pool-id=c4t3oiqw0chi6umb4sqg-e6fb4d4
+                    ibm-cloud.kubernetes.io/worker-pool-name=group-1
+                    ibm-cloud.kubernetes.io/worker-version=1.22.10_1554
+                    ibm-cloud.kubernetes.io/zone=wdc06
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=10.189.31.131
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    privateVLAN=2758610
+                    topology.kubernetes.io/region=us-east
+                    topology.kubernetes.io/zone=wdc06
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.189.31.131/26
+                    projectcalico.org/IPv4IPIPTunnelAddr: 172.30.115.128
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 09 Sep 2021 17:10:58 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  10.189.31.131
+  AcquireTime:     <unset>
+  RenewTime:       Tue, 19 Jul 2022 11:00:41 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Mon, 04 Jul 2022 07:33:51 +0000   Mon, 04 Jul 2022 07:33:51 +0000   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Tue, 19 Jul 2022 10:57:42 +0000   Mon, 04 Jul 2022 07:33:47 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Tue, 19 Jul 2022 10:57:42 +0000   Mon, 04 Jul 2022 07:33:47 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Tue, 19 Jul 2022 10:57:42 +0000   Mon, 04 Jul 2022 07:33:47 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Tue, 19 Jul 2022 10:57:42 +0000   Mon, 04 Jul 2022 07:33:47 +0000   KubeletReady                 kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.189.31.131
+  ExternalIP:  10.189.31.131
+  Hostname:    10.189.31.131
+Capacity:
+  cpu:                32
+  ephemeral-storage:  102685624Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             65757564Ki
+  pods:               250
+Allocatable:
+  cpu:                31840m
+  ephemeral-storage:  93986994917
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             59991420Ki
+  pods:               250
+System Info:
+  Machine ID:                 d7d4bda5b25b4db4af97d22a6a784693
+  System UUID:                0B71A8AB-619B-992A-A63E-E63672B91BC7
+  Boot ID:                    961e8fdc-1cd5-490d-8079-9b2e8382e0be
+  Kernel Version:             4.15.0-180-generic
+  OS Image:                   Ubuntu 18.04.6 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.11
+  Kubelet Version:            v1.22.10+IKS
+  Kube-Proxy Version:         v1.22.10+IKS
+ProviderID:                   ibm://3a6956d15fd54bc9b2d2a779d5cea9ea///c4t3oiqw0chi6umb4sqg/kube-c4t3oiqw0chi6umb4sqg-production2-group1-00000456
+Non-terminated Pods:          (28 in total)
+  Namespace                   Name                                                    CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                    ------------  ----------  ---------------  -------------  ---
+  appops-monitoring           newrelic-bundle-nrk8s-kubelet-lqsh4                     200m (0%)     0 (0%)      300M (0%)        600M (0%)      21d
+  ibm-observe                 logdna-agent-vz4cb                                      20m (0%)      0 (0%)      500Mi (0%)       500Mi (0%)     120d
+  ibm-observe                 sysdig-agent-wjflv                                      3 (9%)        3 (9%)      3Gi (5%)         3Gi (5%)       17d
+  ibm-system                  ibm-cloud-provider-ip-10-188-96-102-75c95498bb-zk9dj    5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         24d
+  ibm-system                  ibm-cloud-provider-ip-10-188-96-99-dcfb6b6fc-m8snx      5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         24d
+  imi                         prometheus-node-exporter-blbqb                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         66d
+  kube-system                 calico-node-c5g8v                                       250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         42d
+  kube-system                 ibm-keepalived-watcher-f4wsq                            5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         42d
+  kube-system                 ibm-master-proxy-static-10.189.31.131                   25m (0%)      300m (0%)   32M (0%)         512M (0%)      38d
+  kube-system                 ibmcloud-iks-debug-57649fdd57-p84f6                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         11d
+  kube-system                 ibmcloud-iks-debug-daemonset-7ftsh                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         11d
+  kube-system                 konnectivity-agent-jshgr                                10m (0%)      0 (0%)      10Mi (0%)        500Mi (0%)     109d
+  kube-system                 metrics-server-76655c7bf-9dgfl                          126m (0%)     266m (0%)   191Mi (0%)       536Mi (0%)     3d1h
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb2-6c9777554b-2qtbg    10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb4-6587644f6-cvz25     10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  prod                        jcp-iib-prod-wdc06-846f78c577-kwtzc                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         3d7h
+  prod                        jcp-iib-prod-wdc06-846f78c577-zf2j4                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         24h
+  prod                        jcp-trialcard-pdf-prod-wdc06-cd7d98454-cxtgv            0 (0%)        0 (0%)      0 (0%)           0 (0%)         5d7h
+  prod                        jcp-trialcard-pdf-prod-wdc06-cd7d98454-xxprt            0 (0%)        0 (0%)      0 (0%)           0 (0%)         14d
+  prod                        jcpiib-caremetx-prod-wdc06-c79544f8b-88pq8              0 (0%)        0 (0%)      0 (0%)           0 (0%)         24h
+  prod                        jcpiib-caremetx-prod-wdc06-c79544f8b-k8xgl              0 (0%)        0 (0%)      0 (0%)           0 (0%)         3d7h
+  prod                        jcpiib-concertai-prod-wdc06-8c86c845-6b2rf              0 (0%)        0 (0%)      0 (0%)           0 (0%)         3d7h
+  prod                        jcpiib-concertai-prod-wdc06-8c86c845-sdh6x              0 (0%)        0 (0%)      0 (0%)           0 (0%)         24h
+  prod                        jcpiib-feed-prod-wdc06-75f9c5c5dc-pxzck                 0 (0%)        0 (0%)      0 (0%)           0 (0%)         3d7h
+  prod                        jcpiib-ns-prod-wdc06-56dbc654c7-jmlkz                   0 (0%)        0 (0%)      0 (0%)           0 (0%)         3d7h
+  tekton-pipelines            pwa-49n6v                                               0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  tekton-pipelines            tekton-pipelines-webhook-6c886546b7-fc4fk               100m (0%)     500m (1%)   100Mi (0%)       500Mi (0%)     24d
+  twistlock                   twistlock-defender-ds-l2vk8                             256m (0%)     900m (2%)   512Mi (0%)       512Mi (0%)     47d
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests         Limits
+  --------           --------         ------
+  cpu                4022m (12%)      4966m (15%)
+  memory             5255064320 (8%)  7004997120 (11%)
+  ephemeral-storage  0 (0%)           0 (0%)
+  hugepages-1Gi      0 (0%)           0 (0%)
+  hugepages-2Mi      0 (0%)           0 (0%)
+Events:              <none>
+Likhitha_Vembuluri@cloudshell:~$ kubectl describe node 10.189.31.132
+Name:               10.189.31.132
+Roles:              <none>
+Labels:             arch=amd64
+                    beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    beta.kubernetes.io/os=linux
+                    deployment-zone=zone2prod
+                    failure-domain.beta.kubernetes.io/region=us-east
+                    failure-domain.beta.kubernetes.io/zone=wdc06
+                    ibm-cloud.kubernetes.io/encrypted-docker-data=true
+                    ibm-cloud.kubernetes.io/ha-worker=true
+                    ibm-cloud.kubernetes.io/iaas-provider=softlayer
+                    ibm-cloud.kubernetes.io/internal-ip=10.189.31.132
+                    ibm-cloud.kubernetes.io/machine-type=c3c.32x64.encrypted
+                    ibm-cloud.kubernetes.io/os=UBUNTU_18_64
+                    ibm-cloud.kubernetes.io/region=us-east
+                    ibm-cloud.kubernetes.io/sgx-enabled=false
+                    ibm-cloud.kubernetes.io/worker-id=kube-c4t3oiqw0chi6umb4sqg-production2-group1-0000034b
+                    ibm-cloud.kubernetes.io/worker-pool-id=c4t3oiqw0chi6umb4sqg-e6fb4d4
+                    ibm-cloud.kubernetes.io/worker-pool-name=group-1
+                    ibm-cloud.kubernetes.io/worker-version=1.22.10_1554
+                    ibm-cloud.kubernetes.io/zone=wdc06
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=10.189.31.132
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    privateVLAN=2758610
+                    topology.kubernetes.io/region=us-east
+                    topology.kubernetes.io/zone=wdc06
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.189.31.132/26
+                    projectcalico.org/IPv4IPIPTunnelAddr: 172.30.168.64
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 09 Sep 2021 17:10:54 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  10.189.31.132
+  AcquireTime:     <unset>
+  RenewTime:       Tue, 19 Jul 2022 11:01:14 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Mon, 04 Jul 2022 07:34:04 +0000   Mon, 04 Jul 2022 07:34:04 +0000   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Tue, 19 Jul 2022 10:59:43 +0000   Mon, 04 Jul 2022 07:33:57 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Tue, 19 Jul 2022 10:59:43 +0000   Mon, 04 Jul 2022 07:33:57 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Tue, 19 Jul 2022 10:59:43 +0000   Mon, 04 Jul 2022 07:33:57 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Tue, 19 Jul 2022 10:59:43 +0000   Mon, 04 Jul 2022 07:33:57 +0000   KubeletReady                 kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.189.31.132
+  ExternalIP:  10.189.31.132
+  Hostname:    10.189.31.132
+Capacity:
+  cpu:                32
+  ephemeral-storage:  102685624Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             65757564Ki
+  pods:               250
+Allocatable:
+  cpu:                31840m
+  ephemeral-storage:  93986994917
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             59991420Ki
+  pods:               250
+System Info:
+  Machine ID:                 4a6dedab5c5f4e32a6dcb436af03608e
+  System UUID:                EA6CFE30-7E35-DF68-1B87-EB8AAE2A23EA
+  Boot ID:                    54d149df-8dbe-41c5-8b56-e5e82885ebff
+  Kernel Version:             4.15.0-180-generic
+  OS Image:                   Ubuntu 18.04.6 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.11
+  Kubelet Version:            v1.22.10+IKS
+  Kube-Proxy Version:         v1.22.10+IKS
+ProviderID:                   ibm://3a6956d15fd54bc9b2d2a779d5cea9ea///c4t3oiqw0chi6umb4sqg/kube-c4t3oiqw0chi6umb4sqg-production2-group1-0000034b
+Non-terminated Pods:          (29 in total)
+  Namespace                   Name                                                    CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                    ------------  ----------  ---------------  -------------  ---
+  appops-monitoring           newrelic-bundle-nrk8s-kubelet-jz94b                     200m (0%)     0 (0%)      300M (0%)        600M (0%)      21d
+  ibm-observe                 logdna-agent-p9fkt                                      20m (0%)      0 (0%)      500Mi (0%)       500Mi (0%)     120d
+  ibm-observe                 sysdig-agent-jrfj9                                      3 (9%)        3 (9%)      3Gi (5%)         3Gi (5%)       17d
+  ibm-system                  ibm-cloud-provider-ip-10-188-96-102-75c95498bb-92vs4    5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-188-96-99-dcfb6b6fc-wjsh4      5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  imi                         grafana-697f5f55d9-45p4h                                0 (0%)        0 (0%)      0 (0%)           0 (0%)         24d
+  imi                         prometheus-node-exporter-xw4wn                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         66d
+  imi                         prometheus-server-5c77c5b5f7-hqvb5                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         38d
+  kube-system                 calico-kube-controllers-54c944dcf5-vkjvb                10m (0%)      0 (0%)      25Mi (0%)        3Gi (5%)       38d
+  kube-system                 calico-node-8whmf                                       250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         42d
+  kube-system                 calico-typha-767958547d-ccg7h                           250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         38d
+  kube-system                 coredns-69fcc66c97-4s9nl                                100m (0%)     0 (0%)      70Mi (0%)        400Mi (0%)     25d
+  kube-system                 ibm-file-plugin-d9d784b45-xmxhs                         50m (0%)      200m (0%)   100Mi (0%)       200Mi (0%)     38d
+  kube-system                 ibm-keepalived-watcher-k4lvb                            5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         42d
+  kube-system                 ibm-master-proxy-static-10.189.31.132                   25m (0%)      300m (0%)   32M (0%)         512M (0%)      38d
+  kube-system                 ibm-storage-watcher-6b7f5446bc-fs72n                    50m (0%)      200m (0%)   100Mi (0%)       200Mi (0%)     38d
+  kube-system                 ibmcloud-iks-debug-daemonset-2564g                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         11d
+  kube-system                 konnectivity-agent-9ws9n                                10m (0%)      0 (0%)      10Mi (0%)        500Mi (0%)     109d
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb2-6c9777554b-9w9p2    10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb4-6587644f6-n2cs9     10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  prod                        filebeat-wdc06-5c894bb5d9-llvbz                         400m (1%)     2 (6%)      400Mi (0%)       1Gi (1%)       38d
+  prod                        jcpiib-csp-prod-wdc06-6757489b86-5wzhn                  0 (0%)        0 (0%)      0 (0%)           0 (0%)         5d7h
+  prod                        jcpiib-csp-prod-wdc06-6757489b86-vv6xx                  0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  prod                        jcpiib-trialcard-prod-wdc06-66bdfc7978-8dfgc            0 (0%)        0 (0%)      0 (0%)           0 (0%)         24h
+  prod                        jcpiib-trialcard-prod-wdc06-66bdfc7978-dmg4p            0 (0%)        0 (0%)      0 (0%)           0 (0%)         24h
+  tekton-pipelines            pwa-mfbwf                                               0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  tekton-pipelines            tekton-pipelines-controller-6ff47f6557-f8j8b            0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  twistlock                   twistlock-console-89c96b445-jktrt                       0 (0%)        0 (0%)      0 (0%)           0 (0%)         38d
+  twistlock                   twistlock-defender-ds-lqztt                             256m (0%)     900m (2%)   512Mi (0%)       512Mi (0%)     47d
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests         Limits
+  --------           --------         ------
+  cpu                4656m (14%)      6600m (20%)
+  memory             5762575104 (9%)  11052500480 (17%)
+  ephemeral-storage  0 (0%)           0 (0%)
+  hugepages-1Gi      0 (0%)           0 (0%)
+  hugepages-2Mi      0 (0%)           0 (0%)
+Events:              <none>
+Likhitha_Vembuluri@cloudshell:~$ kubectl describe node 10.213.45.158
+Name:               10.213.45.158
+Roles:              <none>
+Labels:             arch=amd64
+                    beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    beta.kubernetes.io/os=linux
+                    deployment-zone=zone1prod
+                    failure-domain.beta.kubernetes.io/region=us-east
+                    failure-domain.beta.kubernetes.io/zone=wdc04
+                    ibm-cloud.kubernetes.io/encrypted-docker-data=true
+                    ibm-cloud.kubernetes.io/ha-worker=true
+                    ibm-cloud.kubernetes.io/iaas-provider=softlayer
+                    ibm-cloud.kubernetes.io/internal-ip=10.213.45.158
+                    ibm-cloud.kubernetes.io/machine-type=c3c.32x64.encrypted
+                    ibm-cloud.kubernetes.io/os=UBUNTU_18_64
+                    ibm-cloud.kubernetes.io/region=us-east
+                    ibm-cloud.kubernetes.io/sgx-enabled=false
+                    ibm-cloud.kubernetes.io/worker-id=kube-c4t3oiqw0chi6umb4sqg-production2-group1-000002eb
+                    ibm-cloud.kubernetes.io/worker-pool-id=c4t3oiqw0chi6umb4sqg-e6fb4d4
+                    ibm-cloud.kubernetes.io/worker-pool-name=group-1
+                    ibm-cloud.kubernetes.io/worker-version=1.22.10_1554
+                    ibm-cloud.kubernetes.io/zone=wdc04
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=10.213.45.158
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    privateVLAN=2758606
+                    topology.kubernetes.io/region=us-east
+                    topology.kubernetes.io/zone=wdc04
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.213.45.158/26
+                    projectcalico.org/IPv4IPIPTunnelAddr: 172.30.251.192
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 09 Sep 2021 17:10:17 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  10.213.45.158
+  AcquireTime:     <unset>
+  RenewTime:       Tue, 19 Jul 2022 11:01:43 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Mon, 04 Jul 2022 07:33:34 +0000   Mon, 04 Jul 2022 07:33:34 +0000   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Tue, 19 Jul 2022 10:59:02 +0000   Mon, 04 Jul 2022 07:33:29 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Tue, 19 Jul 2022 10:59:02 +0000   Mon, 04 Jul 2022 07:33:29 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Tue, 19 Jul 2022 10:59:02 +0000   Mon, 04 Jul 2022 07:33:29 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Tue, 19 Jul 2022 10:59:02 +0000   Mon, 04 Jul 2022 07:33:29 +0000   KubeletReady                 kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.213.45.158
+  ExternalIP:  10.213.45.158
+  Hostname:    10.213.45.158
+Capacity:
+  cpu:                32
+  ephemeral-storage:  102685624Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             65757564Ki
+  pods:               250
+Allocatable:
+  cpu:                31840m
+  ephemeral-storage:  93986994917
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             59991420Ki
+  pods:               250
+System Info:
+  Machine ID:                 35b427a9c16f431190c2b31005cb2287
+  System UUID:                50ED1EDD-0F6B-F85A-6201-264CB3433EAC
+  Boot ID:                    d1285bad-25a2-4cfa-84e7-0b09b2a68ea0
+  Kernel Version:             4.15.0-180-generic
+  OS Image:                   Ubuntu 18.04.6 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.11
+  Kubelet Version:            v1.22.10+IKS
+  Kube-Proxy Version:         v1.22.10+IKS
+ProviderID:                   ibm://3a6956d15fd54bc9b2d2a779d5cea9ea///c4t3oiqw0chi6umb4sqg/kube-c4t3oiqw0chi6umb4sqg-production2-group1-000002eb
+Non-terminated Pods:          (28 in total)
+  Namespace                   Name                                                    CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                    ------------  ----------  ---------------  -------------  ---
+  appops-monitoring           newrelic-bundle-kube-state-metrics-6994bd5884-fbwj4     0 (0%)        0 (0%)      0 (0%)           0 (0%)         24d
+  appops-monitoring           newrelic-bundle-nri-kube-events-597bbbbdb5-jqlj6        0 (0%)        0 (0%)      0 (0%)           0 (0%)         24d
+  appops-monitoring           newrelic-bundle-nrk8s-ksm-6b9dcff848-fjb62              200m (0%)     0 (0%)      300M (0%)        1700M (2%)     21d
+  appops-monitoring           newrelic-bundle-nrk8s-kubelet-rwrzx                     200m (0%)     0 (0%)      300M (0%)        600M (0%)      21d
+  ibm-observe                 logdna-agent-dcf22                                      20m (0%)      0 (0%)      500Mi (0%)       500Mi (0%)     120d
+  ibm-observe                 sysdig-agent-5mx6x                                      3 (9%)        3 (9%)      3Gi (5%)         3Gi (5%)       17d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-58-755b4fddd7-mwkg2     5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-59-57df785db-kwhzb      5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-60-7cb5698cb6-4z6bj     5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-62-64fc9cffdb-4pslc     5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  imi                         prometheus-alertmanager-787bbb4f4f-vx2dj                0 (0%)        0 (0%)      0 (0%)           0 (0%)         38d
+  imi                         prometheus-kube-state-metrics-5fd8648d78-4ct9z          0 (0%)        0 (0%)      0 (0%)           0 (0%)         38d
+  imi                         prometheus-node-exporter-jc4vx                          0 (0%)        0 (0%)      0 (0%)           0 (0%)         66d
+  kube-system                 calico-node-nfznq                                       250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         42d
+  kube-system                 calico-typha-767958547d-8n99t                           250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         38d
+  kube-system                 coredns-69fcc66c97-hcbhn                                100m (0%)     0 (0%)      70Mi (0%)        400Mi (0%)     25d
+  kube-system                 coredns-autoscaler-7dc7c85789-vvrpk                     20m (0%)      0 (0%)      10Mi (0%)        0 (0%)         38d
+  kube-system                 dashboard-metrics-scraper-68d584c665-4pqbs              1m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  kube-system                 ibm-keepalived-watcher-pbmn6                            5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         42d
+  kube-system                 ibm-master-proxy-static-10.213.45.158                   25m (0%)      300m (0%)   32M (0%)         512M (0%)      38d
+  kube-system                 ibmcloud-iks-debug-daemonset-hkq2s                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         11d
+  kube-system                 konnectivity-agent-j4cfs                                10m (0%)      0 (0%)      10Mi (0%)        500Mi (0%)     109d
+  kube-system                 kubernetes-dashboard-f9fc56dd9-pr9zh                    50m (0%)      0 (0%)      100Mi (0%)       0 (0%)         38d
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb1-56b6855c66-hfqhj    10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb3-78c9d74888-lp254    10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  prod                        filebeat-wdc04-5f6f9d6b4f-4rwkl                         400m (1%)     2 (6%)      400Mi (0%)       1Gi (1%)       38d
+  tekton-pipelines            pwa-sm8jm                                               0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  twistlock                   twistlock-defender-ds-5xk8t                             256m (0%)     900m (2%)   512Mi (0%)       512Mi (0%)     47d
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests         Limits
+  --------           --------         ------
+  cpu                4827m (15%)      6200m (19%)
+  memory             5973446144 (9%)  9111844608 (14%)
+  ephemeral-storage  0 (0%)           0 (0%)
+  hugepages-1Gi      0 (0%)           0 (0%)
+  hugepages-2Mi      0 (0%)           0 (0%)
+Events:              <none>
+Likhitha_Vembuluri@cloudshell:~$ kubectl describe node 10.213.45.160
+Name:               10.213.45.160
+Roles:              <none>
+Labels:             arch=amd64
+                    beta.kubernetes.io/arch=amd64
+                    beta.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    beta.kubernetes.io/os=linux
+                    deployment-zone=zone1prod
+                    failure-domain.beta.kubernetes.io/region=us-east
+                    failure-domain.beta.kubernetes.io/zone=wdc04
+                    ibm-cloud.kubernetes.io/encrypted-docker-data=true
+                    ibm-cloud.kubernetes.io/ha-worker=true
+                    ibm-cloud.kubernetes.io/iaas-provider=softlayer
+                    ibm-cloud.kubernetes.io/internal-ip=10.213.45.160
+                    ibm-cloud.kubernetes.io/machine-type=c3c.32x64.encrypted
+                    ibm-cloud.kubernetes.io/os=UBUNTU_18_64
+                    ibm-cloud.kubernetes.io/region=us-east
+                    ibm-cloud.kubernetes.io/sgx-enabled=false
+                    ibm-cloud.kubernetes.io/worker-id=kube-c4t3oiqw0chi6umb4sqg-production2-group1-00000155
+                    ibm-cloud.kubernetes.io/worker-pool-id=c4t3oiqw0chi6umb4sqg-e6fb4d4
+                    ibm-cloud.kubernetes.io/worker-pool-name=group-1
+                    ibm-cloud.kubernetes.io/worker-version=1.22.10_1554
+                    ibm-cloud.kubernetes.io/zone=wdc04
+                    kubernetes.io/arch=amd64
+                    kubernetes.io/hostname=10.213.45.160
+                    kubernetes.io/os=linux
+                    node.kubernetes.io/instance-type=c3c.32x64.encrypted
+                    privateVLAN=2758606
+                    topology.kubernetes.io/region=us-east
+                    topology.kubernetes.io/zone=wdc04
+Annotations:        node.alpha.kubernetes.io/ttl: 0
+                    projectcalico.org/IPv4Address: 10.213.45.160/26
+                    projectcalico.org/IPv4IPIPTunnelAddr: 172.30.144.0
+                    volumes.kubernetes.io/controller-managed-attach-detach: true
+CreationTimestamp:  Thu, 09 Sep 2021 17:10:25 +0000
+Taints:             <none>
+Unschedulable:      false
+Lease:
+  HolderIdentity:  10.213.45.160
+  AcquireTime:     <unset>
+  RenewTime:       Tue, 19 Jul 2022 11:02:11 +0000
+Conditions:
+  Type                 Status  LastHeartbeatTime                 LastTransitionTime                Reason                       Message
+  ----                 ------  -----------------                 ------------------                ------                       -------
+  NetworkUnavailable   False   Mon, 04 Jul 2022 07:33:36 +0000   Mon, 04 Jul 2022 07:33:36 +0000   CalicoIsUp                   Calico is running on this node
+  MemoryPressure       False   Tue, 19 Jul 2022 10:59:37 +0000   Mon, 04 Jul 2022 07:33:26 +0000   KubeletHasSufficientMemory   kubelet has sufficient memory available
+  DiskPressure         False   Tue, 19 Jul 2022 10:59:37 +0000   Mon, 04 Jul 2022 07:33:26 +0000   KubeletHasNoDiskPressure     kubelet has no disk pressure
+  PIDPressure          False   Tue, 19 Jul 2022 10:59:37 +0000   Mon, 04 Jul 2022 07:33:26 +0000   KubeletHasSufficientPID      kubelet has sufficient PID available
+  Ready                True    Tue, 19 Jul 2022 10:59:37 +0000   Mon, 04 Jul 2022 07:33:26 +0000   KubeletReady                 kubelet is posting ready status. AppArmor enabled
+Addresses:
+  InternalIP:  10.213.45.160
+  ExternalIP:  10.213.45.160
+  Hostname:    10.213.45.160
+Capacity:
+  cpu:                32
+  ephemeral-storage:  102685624Ki
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             65757564Ki
+  pods:               250
+Allocatable:
+  cpu:                31840m
+  ephemeral-storage:  93986994917
+  hugepages-1Gi:      0
+  hugepages-2Mi:      0
+  memory:             59991420Ki
+  pods:               250
+System Info:
+  Machine ID:                 179cc53bcc1a4d9eaa27f7348606243c
+  System UUID:                7CCE62CD-19FA-9BF5-F7CB-C882D4AAECE6
+  Boot ID:                    62b46a90-3cb6-4fdd-9ab8-07d873fcf31a
+  Kernel Version:             4.15.0-180-generic
+  OS Image:                   Ubuntu 18.04.6 LTS
+  Operating System:           linux
+  Architecture:               amd64
+  Container Runtime Version:  containerd://1.5.11
+  Kubelet Version:            v1.22.10+IKS
+  Kube-Proxy Version:         v1.22.10+IKS
+ProviderID:                   ibm://3a6956d15fd54bc9b2d2a779d5cea9ea///c4t3oiqw0chi6umb4sqg/kube-c4t3oiqw0chi6umb4sqg-production2-group1-00000155
+Non-terminated Pods:          (27 in total)
+  Namespace                   Name                                                       CPU Requests  CPU Limits  Memory Requests  Memory Limits  Age
+  ---------                   ----                                                       ------------  ----------  ---------------  -------------  ---
+  appops-monitoring           newrelic-bundle-nri-metadata-injection-5d6c58b448-n28wc    100m (0%)     0 (0%)      30M (0%)         80M (0%)       31d
+  appops-monitoring           newrelic-bundle-nrk8s-kubelet-8sd4g                        200m (0%)     0 (0%)      300M (0%)        600M (0%)      21d
+  ibm-observe                 logdna-agent-f9qpk                                         20m (0%)      0 (0%)      500Mi (0%)       500Mi (0%)     120d
+  ibm-observe                 sysdig-agent-4blmh                                         3 (9%)        3 (9%)      3Gi (5%)         3Gi (5%)       17d
+  ibm-system                  catalog-operator-67d4d74bd7-7wr56                          10m (0%)      0 (0%)      80Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-58-755b4fddd7-vw4h4        5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-59-57df785db-wr47w         5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-60-7cb5698cb6-knlzz        5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  ibm-cloud-provider-ip-10-213-31-62-64fc9cffdb-s5rv6        5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         38d
+  ibm-system                  olm-operator-7fd8cccf54-rgfj5                              10m (0%)      0 (0%)      160Mi (0%)       0 (0%)         38d
+  imi                         prometheus-node-exporter-lnrb9                             0 (0%)        0 (0%)      0 (0%)           0 (0%)         66d
+  imi                         prometheus-pushgateway-5db69dcff6-wqf6m                    0 (0%)        0 (0%)      0 (0%)           0 (0%)         38d
+  kube-system                 calico-node-4mmz4                                          250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         42d
+  kube-system                 calico-typha-767958547d-7m6mh                              250m (0%)     0 (0%)      80Mi (0%)        0 (0%)         38d
+  kube-system                 coredns-69fcc66c97-7tvjt                                   100m (0%)     0 (0%)      70Mi (0%)        400Mi (0%)     24d
+  kube-system                 ibm-keepalived-watcher-msvwt                               5m (0%)       0 (0%)      10Mi (0%)        0 (0%)         42d
+  kube-system                 ibm-master-proxy-static-10.213.45.160                      25m (0%)      300m (0%)   32M (0%)         512M (0%)      38d
+  kube-system                 ibmcloud-iks-debug-daemonset-hxt2z                         0 (0%)        0 (0%)      0 (0%)           0 (0%)         11d
+  kube-system                 konnectivity-agent-pwrxd                                   10m (0%)      0 (0%)      10Mi (0%)        500Mi (0%)     109d
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb1-56b6855c66-cbxfc       10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  kube-system                 private-crc4t3oiqw0chi6umb4sqg-alb3-78c9d74888-8kqmv       10m (0%)      0 (0%)      100Mi (0%)       0 (0%)         4d14h
+  preprod                     jcp-iib-preprod-wdc04-75d57b988c-72z4x                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         4d22h
+  preprod                     jcp-iib-preprod-wdc04-75d57b988c-dgxnj                     0 (0%)        0 (0%)      0 (0%)           0 (0%)         4d22h
+  preprod                     jcpiib-trialcard-preprod-wdc04-cb5cd484b-xs4mc             0 (0%)        0 (0%)      0 (0%)           0 (0%)         26h
+  tekton-pipelines            private-worker-agent-5565cd974c-hdbtj                      0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  tekton-pipelines            pwa-gvkrh                                                  0 (0%)        0 (0%)      0 (0%)           0 (0%)         26d
+  twistlock                   twistlock-defender-ds-88bgd                                256m (0%)     900m (2%)   512Mi (0%)       512Mi (0%)     47d
+Allocated resources:
+  (Total limits may be over 100 percent, i.e., overcommitted.)
+  Resource           Requests         Limits
+  --------           --------         ------
+  cpu                4276m (13%)      4200m (13%)
+  memory             5409844864 (8%)  6418102784 (10%)
+  ephemeral-storage  0 (0%)           0 (0%)
+  hugepages-1Gi      0 (0%)           0 (0%)
+  hugepages-2Mi      0 (0%)           0 (0%)
+Events:              <none>
+
